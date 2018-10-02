@@ -17,6 +17,11 @@
 	hyphens: auto;
 }
 
+:root{
+	--mdc-theme-primary: #b10438;
+	--mdc-theme-secondary: #e2661d;
+}
+
 .section-team, .section-partner, .section-about, .section-community {
 	h4 {
 		font-weight: 500;

@@ -1,46 +1,42 @@
-<article class="sc-card">
-    <a href="{{this.url}}" rel="canonical" class="sc-card-header" {{#if this.background}}style="background:{{this.background}};"{{/if}}>
-        <span class="sc-card-title">
-            <span class="title">{{{ stripOnlyScript this.title }}}</span>
+<div class="mdc-card">
+    <div class="mdc-card__media mdc-card__media--16-9" {{#if this.background}}style="background:{{this.background}};"{{/if}}></div>
+    <div class="p-1">
+        <div>
+            <h2 class="mdc-typography--headline6">{{{ stripOnlyScript this.title }}}</h2>
             {{#if this.secondaryTitle}}
-                <small class="d-block">{{{ stripOnlyScript this.secondaryTitle }}}</small>
+                <h3 class="demo-card__subtitle mdc-typography--subtitle2">{{{ stripOnlyScript this.secondaryTitle }}}</h3>
             {{/if}}
-        </span>
-
-        <div class="sc-card-menu">
-            {{#each this.actions}}
-                {{#if this.method}}
-                        <button class="sc-card-menu-action {{this.class}}"
-                           
-                           target="_blank"
-                           data-method="DELETE"
-                           data-name="{{../title}}"
-                           alt="'{{../title}}' löschen">
-                            <i class="fa fa-{{this.icon}}"></i>
-                        </button>
-                {{else}}
-                    <button class="sc-card-menu-action {{this.class}}" 
-                      onClick="window.open({{this.link}})"
-                      alt="'{{../../title}}' {{this.alt}}.">
+        </div>
+        <div class="mdc-typography--body2">{{truncateHTML (conflictFreeHtml this.content)}}</div>
+    </div>
+    <div class="mdc-card__actions">
+        {{#each this.actions}}
+            {{#if this.method}}
+                    <button class="mdc-button mdc-card__action mdc-card__action--button mdc-ripple-upgraded {{this.class}}"
+                        
+                        target="_blank"
+                        data-method="DELETE"
+                        data-name="{{../title}}"
+                        alt="'{{../title}}' löschen">
                         <i class="fa fa-{{this.icon}}"></i>
                     </button>
-                {{/if}}
             {{else}}
-                {{#if this.menuInfo}}
-                    <small class="sc-card-menu-info">{{{this.menuInfo}}}</small>
-                {{/if}}
-            {{/each}}
-        </div>
-    </a>
-    <div class="sc-card-body ckcontent">
-        {{truncateHTML (conflictFreeHtml this.content)}}
-    </div>
-    <div class="sc-card-footer">
-        <a href="{{url}}" rel="canonical">{{{link-text}}}</a>
+                <button class="mdc-button mdc-card__action mdc-card__action--button mdc-ripple-upgraded {{this.class}}" 
+                    onClick="window.open({{this.link}})"
+                    alt="'{{../../title}}' {{this.alt}}.">
+                    <i class="fa fa-{{this.icon}}"></i>
+                </button>
+            {{/if}}
+        {{else}}
+            {{#if this.menuInfo}}
+                <small class="sc-card-menu-info">{{{this.menuInfo}}}</small>
+            {{/if}}
+        {{/each}}
+        <a class="mdc-button mdc-card__action mdc-card__action--button mdc-ripple-upgraded" href="{{url}}">{{{link-text}}}</a>
         {{#if additionalInfoName}}
             <div class="additionalInfo" >
                 {{> (concat 'lib/sc-card_additionalInfo/' additionalInfoName) }}
             </div>
         {{/if}}
     </div>
-</article>
+</div>

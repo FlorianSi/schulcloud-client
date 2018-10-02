@@ -29,15 +29,18 @@
         <link rel="manifest" href="/images/manifest.json">
         <link rel="stylesheet" href="/fonts/ptsans/ptsans.css" />
         <link rel="stylesheet" href="/fonts/fontawesome/fontawesome.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" />
         <link rel="stylesheet" href="/styles/lib/base.css" />
     {{/block}}
 
     {{#block "scripts"}}
+        <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js" type="text/javascript" defer></script>
         <script src="/scripts/all.js" type="text/javascript" defer></script>
     {{/block}}
 
 </head>
-<body {{#if inline}}class="window-inline"{{/if}}>
+<body class="{{#if inline}}window-inline{{/if}} mdc-typography">
     {{#block "body"}}{{/block}}
 
     {{#embed "lib/piwik"}}{{/embed}}

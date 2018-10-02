@@ -3,6 +3,14 @@
  * 1. allow multiple events "clicked input" ...
  * 2. define addEventListener on NodeLists (document.querySelectorAll)
  */
+
+window.addEventListener("load", () => {
+    window.mdc.autoInit(document, () => {});
+    document.querySelectorAll(`*[class*="ripple"]`).forEach((node) => {
+        mdc.ripple.MDCRipple.attachTo(node);
+    });
+});
+
 if (!NodeList.prototype.addEventListener) {
     NodeList.prototype.addEventListener = function(events, callback, useCapture) {
         this.forEach((entry)=>{
