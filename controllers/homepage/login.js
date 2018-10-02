@@ -4,9 +4,9 @@
 
 const express = require('express');
 const router = express.Router();
-const api = require('../api');
+const api = require('../../api');
 const feedr = require('feedr').create();
-const authHelper = require('../helpers/authentication');
+const authHelper = require('../../helpers/authentication');
 
 
 const getSelectOptions = (req, service, query) => {

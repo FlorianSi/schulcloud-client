@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const authHelper = require('../helpers/authentication');
+const authHelper = require('../../helpers/authentication');
+
+// Schools
+const schools = require('../../helpers/content/schools.json');
 
 router.get('/', function (req, res, next) {
 
     authHelper.isAuthenticated(req).then(isAuthenticated => {
-        let template = isAuthenticated ? 'community/community_loggedin' : 'community/community_guest';
+        let template = isAuthenticated ? 'about/about_loggedin' : 'about/about_guest';
         if(isAuthenticated) {
             return authHelper.populateCurrentUser(req, res)
                 .then(_ => authHelper.restrictSidebar(req, res))
@@ -14,8 +17,9 @@ router.get('/', function (req, res, next) {
         return Promise.resolve(template);
     }).then( template =>
         res.render(template, {
-            title: 'Mitmachen',
-            inline: !!template.includes('guest')
+            title: 'Projekt',
+            inline: !!template.includes('guest'),
+            schools
         })
     );
 });

@@ -9,34 +9,49 @@ router.use(handlebarsHelper.middleware);
 const googleAnalyticsHelper = require('../helpers/googleAnalytics');
 router.use(googleAnalyticsHelper.middleware());
 
-router.use(require('./login'));
+// HOMEPAGE
+router.use(require('./homepage/login'));
 router.use(require('./registration'));
 
+router.use('/about/', require('./homepage/about'));
+router.use('/community/', require('./homepage/community'));
+router.use('/impressum/', require('./homepage/imprint'));
+router.use('/partner/', require('./homepage/partner'));
+router.use('/team', require('./homepage/team'));
+
+// SERVICES
+router.use('/link/', require('./link'));
+router.use('/notification/', require('./notification'));
+router.use('/help/', require('./help'));
+
+// LOGGEDIN
+// Account
 router.use('/account/', require('./account'));
+router.use('/firstLogin', require('./firstLogin'));
+router.use('/pwrecovery/', require('./pwrecovery'));
+
+// Calendar
 router.use('/calendar/', require('./calendar'));
+// Content
 router.use('/content/', require('./content'));
+// Courses
 router.use('/courses/', require('./courses'));
 router.use('/courses/:courseId/topics/', require('./topics'));
 router.use('/courses/:courseId/tools/', require('./tools'));
 router.use('/courses/:courseId/groups/', require('./coursegroups'));
+// Dashboard
 router.use('/dashboard/', require('./dashboard'));
+// Files
 router.use('/files/', require('./files'));
+// Homework
 router.use('/homework/', require('./homework'));
+// News
 router.use('/news/', require('./news'));
-router.use('/helpdesk/', require('./helpdesk'));
-router.use('/pwrecovery/', require('./pwrecovery'));
-router.use('/notification/', require('./notification'));
-router.use('/link/', require('./link'));
-router.use('/partner/', require('./partner'));
-router.use('/community/', require('./community'));
-router.use('/about/', require('./about'));
-router.use('/help/', require('./help'));
-router.use('/impressum/', require('./imprint'));
-router.use('/team', require('./team'));
+// Materialien
 router.use('/my-material', require('./my-material'));
-router.use('/firstLogin', require('./firstLogin'));
-
-router.use('/administration/', require('./administration'));
-
+// Administration
+// TODO: Split /administration controller into sections (/students, /teachers, /classes, ...)
+router.use('/administration/', require('./administration')); 
+router.use('/helpdesk/', require('./helpdesk'));
 
 module.exports = router;

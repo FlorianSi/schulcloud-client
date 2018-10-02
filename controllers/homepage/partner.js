@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const _orderBy = require('lodash').orderBy;
-const authHelper = require('../helpers/authentication');
+const authHelper = require('../../helpers/authentication');
 
 // Partners
-let partners = require('../helpers/partner/partners.json');
+let partners = require('../../helpers/partner/partners.json');
 
 // Sort Content-Partners, Sponsors & Advisers by Name
 partners.content_partners = _orderBy(partners.content_partners,
