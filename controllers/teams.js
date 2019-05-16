@@ -302,24 +302,6 @@ router.get('/', async (req, res, next) => {
 });
 
 router.post('/', async (req, res, next) => {
-	// map course times to fit model
-	(req.body.times || []).forEach((time) => {
-		time.startTime = moment.duration(time.startTime, 'HH:mm').asMilliseconds();
-		time.duration = time.duration * 60 * 1000;
-	});
-
-	// eslint-disable-next-line no-underscore-dangle
-	req.body.startDate = moment(req.body.startDate, 'DD:MM:YYYY')._d;
-	// eslint-disable-next-line no-underscore-dangle
-	req.body.untilDate = moment(req.body.untilDate, 'DD:MM:YYYY')._d;
-
-	if (!moment(req.body.startDate, 'YYYY-MM-DD').isValid()) {
-		delete req.body.startDate;
-	}
-	if (!moment(req.body.untilDate, 'YYYY-MM-DD').isValid()) {
-		delete req.body.untilDate;
-	}
-
 	if (req.body.rocketchat === 'true') {
 		req.body.features = ['rocketChat'];
 	}
@@ -1171,7 +1153,7 @@ router.get('/invitation/accept/:teamId', async (req, res, next) => {
 		})
 		.catch((err) => {
 			logger.warn(
-				`Fehler beim Annehmen einer Einladung, 
+				`Fehler beim Annehmen einer Einladung,
         der Nutzer hat nicht die Rechte oder ist schon Mitglied des Teams. `,
 				err,
 			);
