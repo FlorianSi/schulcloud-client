@@ -126,7 +126,7 @@ describe('Homework tests', function () {
     it('GET /homework/{users task}/edit', function () {
         return new Promise((resolve, reject) => {
             this.agent
-                .get('/homework/59cce2c61113d1132c98dc06/edit')
+                .get('/homework/5d19fcc1f0a115001c083199/edit')
                 .end((err, res) => {
                     expect(res.statusCode).to.equal(200);
                     expect(res.text).to.contain('Aufgabe bearbeiten');
