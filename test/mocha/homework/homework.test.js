@@ -79,7 +79,7 @@ describe('Homework tests', function () {
     it('GET /homework/{users private task}', function () {
         return new Promise((resolve, reject) => {
             this.agent
-                .get('/homework/59cce1d381297026d02cdc4b')
+                .get('/homework/5d19fcc1f0a115001c083199')
                 .end((err, res) => {
                     expect(res.statusCode).to.equal(200);
                     expect(res.text).to.contain("Private Aufgabe von Marla");
@@ -90,7 +90,7 @@ describe('Homework tests', function () {
     it('GET /homework/{users asked task}', function () {
         return new Promise((resolve, reject) => {
             this.agent
-                .get('/homework/59d1f63ce0a06325e8b5288b')
+                .get('/homework/5a511e170f2e926742f82709')
                 .end((err, res) => {
                     expect(res.statusCode).to.equal(200);
                     expect(res.text).to.contain("Aufgabe an Marla");
@@ -101,7 +101,7 @@ describe('Homework tests', function () {
     it('GET /homework/{teachers private task}', function () {
         return new Promise((resolve, reject) => {
             this.agent
-                .get('/homework/59cce4c3c6abf042248e888e')
+                .get('/homework/5d19ff201cad6b001ad10b1d')
                 .end((err, res) => {
                     expect(res.statusCode).to.not.equal(200);
                     expect(res.text).to.not.contain("Private Aufgabe von Cord");
@@ -138,7 +138,7 @@ describe('Homework tests', function () {
     it('GET /homework/{teachers task}/edit', function () {
         return new Promise((resolve, reject) => {
             this.agent
-                .get('/homework/59cce3f6c6abf042248e888d/edit')
+                .get('/homework/5a511e170f2e926742f82709/edit')
                 .end((err, res) => {
                     expect(res.statusCode).to.not.equal(200);
                     expect(res.text).to.not.contain('Aufgabe bearbeiten');
